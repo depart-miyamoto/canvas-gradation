@@ -42,5 +42,11 @@ export default {
           "Expected class selector to be kebab-case or BEM pattern (block__element--modifier)",
       },
     ],
+    "function-no-unknown": [
+      true,
+      {
+        ignoreFunctions: [/^rem/, /^res-/], // 文字列ではなくRegExpオブジェクトで指定
+      },
+    ],
   },
 };

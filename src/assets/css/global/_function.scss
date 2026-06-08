@@ -1,0 +1,62 @@
+@use "sass:math";
+@use "sass:string";
+
+@function rem($px) {
+  @return #{math.div($px, 16px) + "rem"};
+}
+
+// 画面サイズによってサイズが変動するpxやremを出力する 上限・下限なし
+// prettier-ignore
+@function res-rem(
+  $min-font,
+  $max-font,
+  $media-min: 360px,
+  $media-max: 1140px
+) {
+  $times: math.div(($max-font - $min-font) * 100, $media-max - $media-min);
+  $plus: ($max-font) - (math.div($media-max, 100) * $times);
+
+  @return calc(
+    #{$times}vw + #{string.slice( #{math.div($plus, 16)}, 1, string.index(#{math.div($plus, 16)}, px) - 1 ) + (rem)}
+  );
+}
+
+// prettier-ignore
+@function res-px(
+  $min-size,
+  $max-size,
+  $media-min: 360px,
+  $media-max: 1140px
+) {
+  $times: math.div(($max-size - $min-size) * 100, $media-max - $media-min);
+  $plus: ($max-size) - (math.div($media-max, 100) * $times);
+
+  @return calc(
+    #{$times}vw + #{string.slice(#{($plus)}, 1, string.index(#{($plus)}, px) - 1) + (px)}
+  );
+}
+
+// 画面サイズによってサイズが変動するpxやremを出力する 上限・下限あり
+// prettier-ignore
+@function res-rem-max($min-font, $max-font, $media-min: 360px, $media-max: 1140px) {
+  $times: math.div(($max-font - $min-font) * 100, $media-max - $media-min);
+  $plus: ($max-font) - (math.div($media-max, 100) * $times);
+
+  @if $max-font >= $min-font {
+    @return min(calc(#{$times}vw + #{string.slice(#{math.div($plus, 16)}, 1, string.index(#{math.div($plus, 16)}, px) - 1) + (rem)}), #{string.slice(#{math.div($max-font, 16)}, 1, string.index(#{math.div($max-font, 16)}, px) - 1) + (rem)});
+  } @else {
+    @return max(calc(#{$times}vw + #{string.slice(#{math.div($plus, 16)}, 1, string.index(#{math.div($plus, 16)}, px) - 1) + (rem)}), #{string.slice(#{math.div($max-font, 16)}, 1, string.index(#{math.div($max-font, 16)}, px) - 1) + (rem)});
+  }
+}
+
+// prettier-ignore
+@function res-px-max($min-size, $max-size, $media-min: 360px, $media-max: 1140px) {
+  $times: math.div(($max-size - $min-size) * 100, $media-max - $media-min);
+  $plus: ($max-size) - (math.div($media-max, 100) * $times);
+
+  @if $max-size >= $min-size {
+    @return min(calc(#{$times}vw + #{string.slice(#{($plus)}, 1, string.index(#{($plus)}, px) - 1) + (px)}), #{string.slice(#{($max-size)}, 1, string.index(#{($max-size)}, px) - 1) + (px)});
+  } @else {
+    @return max(calc(#{$times}vw + #{string.slice(#{($plus)}, 1, string.index(#{($plus)}, px) - 1) + (px)}), #{string.slice(#{($max-size)}, 1, string.index(#{($max-size)}, px) - 1) + (px)});
+  }
+}
