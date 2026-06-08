@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : site.title %></title>
+  <meta name="description" content="<%= typeof description !== 'undefined' ? description : site.description %>">
+  <meta name="keywords" content="<%= typeof keywords !== 'undefined' ? keywords : site.keywords %>">
+  <meta name="author" content="<%= typeof author !== 'undefined' ? author : site.author %>">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="<%= typeof title !== 'undefined' ? title : site.title %>">
+  <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : site.description %>">
+  <meta property="og:type" content="<%= typeof ogType !== 'undefined' ? ogType : site.ogType %>">
+  <meta property="og:url" content="<%= typeof url !== 'undefined' ? url : site.url %>">
+  <meta property="og:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : site.ogImage %>">
+  <meta property="og:site_name" content="<%= typeof siteName !== 'undefined' ? siteName : site.siteName %>">
+  <meta name="twitter:card" content="<%= typeof twitterCard !== 'undefined' ? twitterCard : site.twitterCard %>">
+  <meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : site.title %>">
+  <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : site.description %>">
+  <meta name="twitter:image" content="<%= typeof twitterImage !== 'undefined' ? twitterImage : site.twitterImage %>">
+
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> -->
+
+  <link href="/assets/css/style.scss" rel="stylesheet">
+  <% if (typeof css !== 'undefined' || site.css) { %>
+    <link href="<%= typeof css !== 'undefined' ? css : site.css %>" rel="stylesheet">
+  <% } %>
+
+  <!-- Google Tag Manager -->
+  <!-- End Google Tag Manager -->
+
+  <script type="module" src="/assets/js/script.js"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <!-- End Google Tag Manager (noscript) -->
+
+  <%- include('../parts/header') %>
+  <main class="l-main">
+    <div class="l-main__inner">
+      <%- content %>
+    </div>
+  </main>
+  <%- include('../parts/footer') %>
+</body>
+</html>

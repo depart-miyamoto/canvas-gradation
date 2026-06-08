@@ -1,0 +1,15 @@
+@use "../global" as *;
+
+.m-timetable {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+
+  &__title {
+    padding-block: 1em;
+    color: var(--color-white);
+    text-align: center;
+    background-color: var(--color-black);
+    border-radius: 6px 6px 0 0;
+  }
+}

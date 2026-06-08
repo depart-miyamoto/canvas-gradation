@@ -1,0 +1,30 @@
+@use "sass:list";
+
+// :hover, :focus, :activeの疑似クラスを一括設定
+// @param {Boolean} $_hover  - :hoverのセレクタの有効／無効
+// @param {Boolean} $_focus  - :focusのセレクタの有効／無効
+// ---------------------------------------------------------------------------
+
+@mixin hover($_hover: true, $_focus: false) {
+  @if $_hover {
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        @content;
+      }
+    }
+  }
+
+  @if $_focus {
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin hover-opacity() {
+  transition: opacity var(--transition-duration);
+
+  @include hover {
+    opacity: var(--hover-opacity);
+  }
+}

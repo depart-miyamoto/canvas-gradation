@@ -1,0 +1,24 @@
+@use "../mixin";
+@use "../var";
+
+%container {
+  padding-inline: var(--content-gutter);
+
+  @include mixin.mq {
+    padding-inline: min(calc(40 / 768 * 100vw), var(--content-gutter-wide));
+  }
+}
+
+%content {
+  max-width: var(--content-width);
+  margin-inline: auto;
+
+  @include mixin.reset-child-margin;
+}
+
+%content-medium {
+  max-width: var(--content-width-medium);
+  margin-inline: auto;
+
+  @include mixin.reset-child-margin;
+}

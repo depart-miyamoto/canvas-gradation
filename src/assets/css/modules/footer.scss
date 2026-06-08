@@ -1,0 +1,19 @@
+@use "../global" as *;
+
+.l-footer {
+  position: sticky;
+  top: 100dvh;
+  padding: 60px var(--content-gutter);
+
+  @include mq {
+    padding: 100px var(--content-gutter-wide);
+  }
+}
+
+.l-footer__inner {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+// .m-footer {
+// }

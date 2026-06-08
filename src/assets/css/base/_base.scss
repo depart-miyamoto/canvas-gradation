@@ -1,0 +1,55 @@
+@use "../global" as *;
+@use "sass:map";
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-padding);
+
+  @include mq(above, map.get($breakpoint, lg)) {
+    scroll-padding-top: var(--scroll-padding-tab);
+  }
+
+  @include mq(above, map.get($breakpoint, xl)) {
+    scroll-padding-top: var(--scroll-padding-pc);
+  }
+}
+
+body {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--color-black);
+  letter-spacing: var(--letter-spacing);
+
+  @include mq {
+    font-size: 1rem;
+  }
+}
+
+a {
+  :where(&[href]) {
+    color: var(--color-link);
+  }
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+
+  // image-rendering: optimize-contrast;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: var(--font-family);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}

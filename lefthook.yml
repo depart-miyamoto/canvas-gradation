@@ -1,0 +1,19 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      run: npm run eslint:fix
+      glob: "*.{js,ts,jsx,tsx}"
+      stage_fixed: true
+      fail_text: "ESLint found issues. Please fix them and try again."
+
+    stylelint:
+      run: npm run stylelint:fix
+      glob: "*.{css,scss,sass}"
+      stage_fixed: true
+      fail_text: "Stylelint found style issues. Please fix them and try again."
+
+    lint:
+      run: npm run lint:fix
+      stage_fixed: true
+      fail_text: "Linting found issues. Please fix them and try again."

@@ -1,0 +1,7 @@
+@use "global" as *;
+@use "base";
+@use "components";
+@use "modules";
+@use "layout";
+@tailwind base;
+@tailwind utilities;

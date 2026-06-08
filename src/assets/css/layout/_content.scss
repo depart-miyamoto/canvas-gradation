@@ -1,0 +1,9 @@
+@use "../global" as *;
+
+.l-content {
+  @extend %content;
+}
+
+.l-content--medium {
+  @extend %content-medium;
+}

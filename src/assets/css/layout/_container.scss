@@ -1,0 +1,39 @@
+@use "../global" as *;
+
+.l-container {
+  @extend %container;
+}
+
+.l-container--fluid {
+  @extend %container;
+
+  padding-inline: 0;
+}
+
+.l-container--left {
+  @extend %container;
+
+  border-radius: 0 30px 30px 0;
+
+  @include mq {
+    position: relative;
+    max-width: calc(100% - 80px);
+    margin-inline: auto;
+    border-radius: 0 60px 60px 0;
+  }
+
+  &::before {
+    @include mq {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 50vw);
+      z-index: -1;
+      display: block;
+      width: 50%;
+      height: 100%;
+      content: "";
+      background-color: inherit;
+    }
+  }
+}

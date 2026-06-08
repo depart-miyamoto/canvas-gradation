@@ -1,0 +1,15 @@
+@use "./media-query";
+
+// 直下にある最初の子要素に設定されている上マージンを0にする
+// ---------------------------------------------------------------------------
+@mixin reset-child-margin {
+  > :first-child {
+    margin-top: 0;
+  }
+
+  @include media-query.mq {
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+}

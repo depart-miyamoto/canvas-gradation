@@ -1,0 +1,72 @@
+@use "sass:math";
+
+// media query
+// ---------------------------------------------
+
+$breakpoint: (
+  sm: 480px,
+  md: 768px,
+  lg: 960px,
+  xl: 1280px,
+);
+
+:root {
+  // font
+  --font-family:
+    "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial",
+    "Meiryo", sans-serif;
+  --font-family-en:
+    "Poppins", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Arial", "Meiryo", sans-serif;
+
+  // font size
+  --font-size: 0.875rem;
+
+  // line height
+  --line-height: 1.8;
+
+  // letter spacing
+  --letter-spacing: 0.05em;
+
+  // color
+  --color-main: #036eb8;
+  --color-main-light: #e1ecf4;
+  --color-main-light2: #f5fafe;
+  --color-gray: #666;
+  --color-light-gray: #f0f0f0;
+  --color-black: #111;
+  --color-white: #fff;
+  --color-border: #ddd;
+
+  // --color-text: #000;
+  // --color-scrollbar-track: #ddd;
+  // --color-scrollbar-thumb: #00aaff;
+
+  // content width
+  --content-width: 1320px;
+  --content-width-medium: 1100px;
+
+  // content gutter
+  --content-gutter: 20px;
+  --content-gutter-wide: 60px;
+
+  // module gutter
+  --module-gutter: 1.875rem;
+  --module-gutter-wide: 2.5rem;
+
+  // scroll
+  --scroll-padding: 0;
+  --scroll-padding-tab: 0;
+  --scroll-padding-pc: 0;
+
+  // transition
+  --transition-duration: 0.4s;
+  --hover-opacity: 0.8;
+
+  // z-index
+  --z-index-header: 10;
+
+  // header height
+  --header-height: 80px;
+  --header-height-sp: 60px;
+}
