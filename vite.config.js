@@ -1,11 +1,12 @@
 import { eleventyPlugin } from "vite-plugin-eleventy";
 import { sharpOptimizer } from "./vite-plugins/sharp-optimizer.js";
 import serveEjsDynamic from "./vite-plugins/serve-ejs-dynamic.js";
+import glsl from "vite-plugin-glsl";
 
 const normalizePath = (value) => value?.replaceAll("\\", "/") ?? "";
 
 export default {
-  plugins: [serveEjsDynamic(), eleventyPlugin(), sharpOptimizer()],
+  plugins: [serveEjsDynamic(), eleventyPlugin(), sharpOptimizer(), glsl()],
   root: "src",
   publicDir: "../public",
   build: {
@@ -27,7 +28,8 @@ export default {
             .map(normalizePath)
             .find(
               (moduleId) =>
-                moduleId.includes("/src/assets/js/") && moduleId.endsWith(".js"),
+                moduleId.includes("/src/assets/js/") &&
+                moduleId.endsWith(".js"),
             );
 
           if (!entryInfo.name && jsModuleId) {
